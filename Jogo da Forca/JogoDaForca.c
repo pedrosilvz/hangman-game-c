@@ -5,7 +5,7 @@
 #include <time.h>
 #include <locale.h>
 
-// variáveis globais
+// variÃ¡veis globais
 char palavrasecreta [TAMANHO_PALAVRA];
 char chutes [26];                             
 int chutesDados = 0;
@@ -23,12 +23,12 @@ void chuta () {
 
       printf("\nQual seu chute? ");
       char chute;
-      scanf( " %c", &chute);        // o espaço em " %c" é necessário quando você quer ler um char, pois ele desconsidera o ENTER   
-      chutes[chutesDados] = chute;    // chutes na [posição tentativas] é igual ao chute que você deu
+      scanf( " %c", &chute);        // o espaÃ§o em " %c" Ã© necessÃ¡rio quando vocÃª quer ler um char, pois ele desconsidera o ENTER   
+      chutes[chutesDados] = chute;    // chutes na [posiÃ§Ã£o tentativas] Ã© igual ao chute que vocÃª deu
       chutesDados++;              
 
       printf("\n_____________________________\n");
-      printf("\n       ÚLTIMO CHUTE: %c", chute);
+      printf("\n       ÃšLTIMO CHUTE: %c", chute);
 
         printf("\n       CHUTES DADOS:\n");
         for (int i = 0; i < chutesDados; i++) {
@@ -56,14 +56,14 @@ int jachutou (char letra) {
 
     int achou = 0;
 
-     for (int j = 0; j < chutesDados; j++) {          // esse loop serve para varrer se o chute na [posição 0 ou mais] é igual a [posição 0 da array palavrasecreta] e assim por diante
-        if (chutes[j] == letra) {                     // se a letra que está no chutes na [posição j] for igual a igual letra que tá na palavrasecreta  [posição i] essa letra foi chutada         
+     for (int j = 0; j < chutesDados; j++) {          // esse loop serve para varrer se o chute na [posiÃ§Ã£o 0 ou mais] Ã© igual a [posiÃ§Ã£o 0 da array palavrasecreta] e assim por diante
+        if (chutes[j] == letra) {                     // se a letra que estÃ¡ no chutes na [posiÃ§Ã£o j] for igual a igual letra que tÃ¡ na palavrasecreta  [posiÃ§Ã£o i] essa letra foi chutada         
             achou = 1;                               
             break;  
          }                    
-      }               // conforme você vai chutando as letras, o número do componente do array chutes vai aumentando (por exemplo, se eu chutar A, a letra vai para a posição 0 no array) 
+      }               // conforme vocÃª vai chutando as letras, o nÃºmero do componente do array chutes vai aumentando (por exemplo, se eu chutar A, a letra vai para a posiÃ§Ã£o 0 no array) 
 
-    return achou;       // devolve o resultado dentro da variável achou
+    return achou;       // devolve o resultado dentro da variÃ¡vel achou
 }
 
 void desenhaforca () {
@@ -72,7 +72,7 @@ void desenhaforca () {
     printf("\n---------------------\n");
     printf("  _______       \n");
     printf(" |/      |      \n");
-    printf(" |      %c%c%C    \n", (erros >= 1 ? '(' : ' '), (erros >= 1 ? ' ' : ' '), (erros >= 1 ? ')' : ' '));                                   // if ternário
+    printf(" |      %c%c%C    \n", (erros >= 1 ? '(' : ' '), (erros >= 1 ? ' ' : ' '), (erros >= 1 ? ')' : ' '));                                   // if ternÃ¡rio
     printf(" |      %c%c%c  \n", (erros >= 3 ? '\\' : ' '), (erros >= 2 ? '|' : ' '), (erros >= 4 ? '/' : ' '));
     printf(" |       %c     \n", (erros >= 5 ? '|' : ' '));
     printf(" |      %c %c   \n", (erros >= 6 ? '/' : ' '), (erros >= 7 ? '\\' : ' '));
@@ -81,16 +81,14 @@ void desenhaforca () {
     printf("\n---------------------\n");
     printf("\n");
 
-     for (int i = 0; i < strlen(palavrasecreta); i++) {            // serve para varrer o array com o i = 0;
+     for (int i = 0; i < strlen(palavrasecreta); i++) {            
         
-        int achou  =  jachutou(palavrasecreta[i]);      // passa a função e os parâmetros
-            
-            // aqui estava o código
+        int achou  =  jachutou(palavrasecreta[i]);      // passa a funÃ§Ã£o e os parÃ¢metros
 
          if (achou) {
-            printf ("%c ", palavrasecreta[i]);          // Se achou for 1 (verdadeiro) imprime a letra que você chutou no lugar do underline "_"
+            printf ("%c ", palavrasecreta[i]);          // Se achou for 1 (verdadeiro) imprime a letra que vocÃª chutou no lugar do underline "_"
      } else {
-            printf("_ ");                              // Caso a letra que você chutou não estiver na palavra, substitui por um underline "_"
+            printf("_ ");                              // Caso a letra que vocÃª chutou nÃ£o estiver na palavra, substitui por um underline "_"
     }         
   }
     printf("\n");
@@ -102,28 +100,28 @@ void adcionapalavra() {
 
     char quer;
 
-    printf("\nVocê jogador(a), deseja adcionar uma nova palavra no jogo? (S/N): ");
+    printf("\nVocÃª jogador(a), deseja adcionar uma nova palavra no jogo? (S/N): ");
     scanf(" %c", &quer);
 
     if (quer == 'S') {
         char novapalavra [TAMANHO_PALAVRA];
-        printf("\n Qual nova palavra você deseja adcionar? ");
+        printf("\n Qual nova palavra vocÃª deseja adcionar? ");
         scanf("%s", novapalavra);
 
         FILE* f;
 
-        f = fopen("palavras.txt", "r+");      //r+ é leitura e escrita
+        f = fopen("palavras.txt", "r+");      //r+ Ã© leitura e escrita
         if (f == NULL) {
             setlocale(LC_ALL, "Portuguese_Brazil");
-            printf("\nBanco de dados de palavras não disponível!\n\n");
+            printf("\nBanco de dados de palavras nÃ£o disponÃ­vel!\n\n");
             exit(1);
         }
 
         int qtd;                          // pega quantidade de palavras no arquivo
         fscanf(f, "%d", &qtd);
-        qtd++;                           // somou 1
+        qtd++;                           
 
-        fseek(f, 0, SEEK_SET);          // Posicionou a cabeça do arquivo pro começo do arquivo    
+        fseek(f, 0, SEEK_SET);          // Posicionou a cabeÃ§a do arquivo pro comeÃ§o do arquivo    
         fprintf(f, "%d", qtd);          // Imprimiu em cima
 
         fseek(f, 0, SEEK_END);              // posiciona no fim do arquivo
@@ -141,18 +139,18 @@ void escolhepalavra() {
 
     if(f == NULL) {
         setlocale(LC_ALL, "Portuguese_Brazil");
-        printf("\nBanco de dados de palavras não disponível!\n\n");
+        printf("\nBanco de dados de palavras nÃ£o disponÃ­vel!\n\n");
         exit(1);                                                            // exit (1) termina o programa
     }
     // descobri a quantidade de palavras que tem nesse arquivo (100 palavras)
     int qtddepalavras;
     fscanf(f, "%d", &qtddepalavras);
 
-    // calcula um número randômico de 0 até a quantidade de palavra (0 até 99)
+    // calcula um nÃºmero randÃ´mico de 0 atÃ© a quantidade de palavra (0 atÃ© 99)
     srand(time(0));
     int randomico = rand() % qtddepalavras;
 
-    // Lê até encontrar a palavra escolhida
+    // LÃª atÃ© encontrar a palavra escolhida
     for(int i = 0; i <= randomico; i++) {
         fscanf(f, "%19s", palavrasecreta); // Evita estouro de buffer
     }
@@ -188,12 +186,12 @@ int main () {
     setlocale(LC_ALL, "Portuguese_Brazil");
     escolhepalavra(palavrasecreta);
 
-    abertura();                                     // invocar a função "abertura"
+    abertura();                                     // invocar a funÃ§Ã£o "abertura"
 
     do { 
 
         desenhaforca();
-        chuta ();                        // invoca a função e recebe o endereço de memória da varíavel (*Ptentativas) na função chuta e coloca na variável (int tentativas)
+        chuta ();                       
 
 
     } while (!acertou() && !enforcou());
@@ -201,11 +199,11 @@ int main () {
 
     if (acertou()) {
         printf("\n=================================================\n");
-        printf("\n--> PARABÉNS!  VOCÊ ACERTOU A PALAVRA: %s\n", palavrasecreta);
+        printf("\n--> PARABÃ‰NS!  VOCÃŠ ACERTOU A PALAVRA: %s\n", palavrasecreta);
         printf("\n=================================================\n");
     } else {
         printf("\n=================================================\n");
-        printf("\n--> VOCÊ FOI ENFORCADO!! TENTE NOVAMENTE!\n");
+        printf("\n--> VOCÃŠ FOI ENFORCADO!! TENTE NOVAMENTE!\n");
         printf("----> A PALAVRA ERA: %s\n", palavrasecreta);
         printf("\n=================================================\n");
     }
